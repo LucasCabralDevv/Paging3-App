@@ -14,7 +14,10 @@ import com.lucascabral.paging3app.network.CharacterData
 class RickMortyAdapter: PagingDataAdapter<CharacterData, RickMortyAdapter.MyViewHolder>(DiffUtilCallBack()) {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(getItem(position)!!)
+        val item = getItem(position)
+        item?.let {
+            holder.bind(it)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
