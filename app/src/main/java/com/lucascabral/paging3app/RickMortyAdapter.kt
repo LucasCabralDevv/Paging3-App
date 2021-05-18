@@ -1,5 +1,6 @@
 package com.lucascabral.paging3app
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,14 @@ class RickMortyAdapter: PagingDataAdapter<CharacterData, RickMortyAdapter.MyView
             descTextView.text = data.species
 
             Glide.with(imageView).load(data.image).circleCrop().into(imageView)
+
+            itemView.setOnClickListener {
+                val intent = Intent(it.context, MainActivity2::class.java)
+                intent.putExtra("name", data.name)
+                intent.putExtra("image", data.image)
+                intent.putExtra("species", data.species)
+                it.context.startActivity(intent)
+            }
         }
     }
 
